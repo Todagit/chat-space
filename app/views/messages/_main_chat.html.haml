@@ -1,0 +1,43 @@
+.chat-main
+  .chat-main__group-info
+    %h2.active-group
+      test
+      %ul.member-list
+        %li.member<>
+          Member:Toda
+    .edit-btn
+      = link_to "#" do
+        Edit
+  .chat-main__message-list
+    .post
+      .user-data
+        %p.name
+          Toda
+        %p.date
+          2020/05/17(sun) 20:09:00
+      %p.message
+        おはよう！
+    .post
+      .user-data
+        %p.name
+          Toda
+        %p.date
+          2020/05/17(sun) 20:24:00
+      %p.message
+        複数回の表示
+    .post
+      .user-data
+        %p.name
+          Toda
+        %p.date
+          2020/05/17(sun) 20:25:00
+      %p.message
+        今日も暑かった
+  .chat-main__form
+    %form.new-message
+      .input-box
+        %input.input-box__text{name: "message", placeholder: "type a message", type: "text"}
+        %label{class: "input-box__image", for: "message-image"}
+          %i.far.fa-image
+          %input{type: "file", id: "message-image"}
+      %input.submit-btn{name: "submit-btn", type: "submit", value: "Send"}
