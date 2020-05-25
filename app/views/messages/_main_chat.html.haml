@@ -1,43 +1,24 @@
 .chat-main
   .chat-main__group-info
     %h2.active-group
-      test
+      = @group.name
       %ul.member-list
-        %li.member<>
-          Member:Toda
+        .member
+          Member: 
+          - @group.users.each do |user|
+            = user.name
     .edit-btn
-      = link_to "#" do
+      = link_to edit_group_path(@group) do
         Edit
   .chat-main__message-list
-    .post
-      .user-data
-        %p.name
-          Toda
-        %p.date
-          2020/05/17(sun) 20:09:00
-      %p.message
-        おはよう！
-    .post
-      .user-data
-        %p.name
-          Toda
-        %p.date
-          2020/05/17(sun) 20:24:00
-      %p.message
-        複数回の表示
-    .post
-      .user-data
-        %p.name
-          Toda
-        %p.date
-          2020/05/17(sun) 20:25:00
-      %p.message
-        今日も暑かった
+    .messages
+      = render partial: 'message', collection: @messages
   .chat-main__form
-    %form.new-message
+    = form_for [@group, @message] do |f|
       .input-box
-        %input.input-box__text{name: "message", placeholder: "type a message", type: "text"}
-        %label{class: "input-box__image", for: "message-image"}
-          %i.far.fa-image
-          %input{type: "file", id: "message-image"}
-      %input.submit-btn{name: "submit-btn", type: "submit", value: "Send"}
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          -# %i.far.fa-image
+          = icon("far", "image")
+          = f.file_field :image, class: 'message-image'
+        = f.submit 'Send', class: 'submit-btn'
