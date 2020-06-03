@@ -4,8 +4,8 @@ describe MessagesController do
 
   # 複数のexampleで同一のインスタンスを使いたい場合、
   # letを利用してテスト中使用するインスタンスを定義
-  let(:group) { create(:group)}
-  let(:user) { create(:user)}
+  let(:group) { create(:group) }
+  let(:user) { create(:user) }
 
 
   describe '#index' do
