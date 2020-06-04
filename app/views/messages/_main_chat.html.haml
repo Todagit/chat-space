@@ -10,15 +10,13 @@
     .edit-btn
       = link_to edit_group_path(@group) do
         Edit
-  .chat-main__message-list
-    .messages
-      = render partial: 'message', collection: @messages
+  .messages
+    = render partial: 'message', collection: @messages
   .chat-main__form
     = form_for [@group, @message] do |f|
       .input-box
         = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
         = f.label :image, class: 'input-box__image' do
-          -# %i.far.fa-image
           = icon("far", "image")
           = f.file_field :image, class: 'message-image'
         = f.submit 'Send', class: 'submit-btn'

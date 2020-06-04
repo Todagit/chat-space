@@ -94,10 +94,11 @@
       text-decoration: none;
     }
   }
-  &__message-list {
+  .messages {
     background-color: #fafafa;
     height: calc(100vh - 100px - 90px);
     overflow: scroll;
+
     .user-data {
       padding-top: 35px;
       padding-bottom: 12px;
